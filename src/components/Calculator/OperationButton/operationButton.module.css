@@ -1,0 +1,29 @@
+@import url("../../../colors.css");
+
+.button {
+  min-width: 80px;
+  min-height: 60px;
+  margin: 0;
+  padding: 0;
+  background-color: var(--operationButtonsColor);
+  font-family: "Rubic";
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--secondaryColor);
+  border: none;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.button:hover {
+  background-color: var(--corall);
+}
+
+.button:active {
+  background-color: var(--primaryColor);
+}
+
+.button:last-child {
+  background-color: var(--resultButtonColor);
+}
