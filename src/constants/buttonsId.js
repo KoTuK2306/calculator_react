@@ -1,0 +1,14 @@
+export const PERCENT = "PERCENT";
+export const DELETE_LAST_OPERATION = "DELETE_LAST_OPERATION";
+export const CLEAN = "CLEAN";
+export const BACKSPACE = "BACKSPACE";
+export const PART_OF_A_WHOLE = "PART_OF_A_WHOLE";
+export const SQUARE = "SQUARE";
+export const SQRT = "SQRT";
+export const DIVIDE = "DIVIDE";
+export const MULTIPLE = "MULTIPLE";
+export const MINUS = "MINUS";
+export const SUM = "SUM";
+export const CHANGE_SIGN = "CHANGE_SIGN";
+export const POINT = "POINT";
+export const COUNT_UP = "COUNT_UP";
