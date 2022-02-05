@@ -4,10 +4,14 @@ import { calcPercent } from "./calcPercent";
 import { point } from "./point";
 import { countUp } from "./countUp";
 import { numberProtection } from "./numberProtection";
+import { operationProtection } from "./operationProtection";
+import { changeSign } from "./changeSign";
+import { changeTextSize } from "./changeTextSize";
 
 let countUpIsClicked = false;
 
 export const setNumber = (event, setStr, setInput, str, input) => {
+  if (event.target.id === "buttonsWrapper") return;
   setStr(
     numberProtection(str + event.target.innerHTML, countUpIsClicked, event)
   );
@@ -21,7 +25,7 @@ export const setNumber = (event, setStr, setInput, str, input) => {
     case buttonsId.MINUS:
     case buttonsId.MULTIPLE:
     case buttonsId.DIVIDE:
-      setInput(input + str + event.target.innerHTML);
+      setInput(operationProtection(input + str, event.target.innerHTML));
       setStr("");
       break;
     case buttonsId.DELETE_LAST_OPERATION:
@@ -46,10 +50,13 @@ export const setNumber = (event, setStr, setInput, str, input) => {
       setInput("");
       break;
     case buttonsId.BACKSPACE:
-      setStr(str.slice(0, -1));
+      setStr(str.toString().slice(0, -1));
       break;
     case buttonsId.POINT:
       setStr(point(str));
+      break;
+    case buttonsId.CHANGE_SIGN:
+      setStr(changeSign(str));
       break;
     case buttonsId.COUNT_UP:
       countUpIsClicked = true;
@@ -61,4 +68,5 @@ export const setNumber = (event, setStr, setInput, str, input) => {
     default:
       break;
   }
+  changeTextSize(str);
 };

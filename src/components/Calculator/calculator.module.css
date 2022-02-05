@@ -27,13 +27,13 @@
 }
 
 .input {
-  margin: 0 10px 0 0;
+  margin: 10px 10px 0 10px;
   text-align: end;
   font-size: 15px;
 }
 
 .result {
-  margin: 0 10px 0 0;
+  margin: 0 10px 10px 10px;
   text-align: end;
   font-size: 35px;
   transition: all 0.2s;

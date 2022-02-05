@@ -13,9 +13,12 @@ const Calculator = () => {
   return (
     <div className={classes.calculator}>
       <p className={classes.input}>{input}</p>
-      <p className={classes.result}>{str === "" ? 0 : str}</p>
+      <p id={"result"} className={classes.result}>
+        {str === "" ? 0 : str}
+      </p>
       <div
         className={classes.buttonsWrapper}
+        id={"buttonsWrapper"}
         onClick={(event) => setNumber(event, setStr, setInput, str, input)}
       >
         <OperationButton content={"%"} id={"PERCENT"} />
