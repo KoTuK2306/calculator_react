@@ -1,8 +1,5 @@
-const result = document.getElementById("result");
-
-export const changeTextSize = (str) => {
-  if (str.length > 15) {
-    result.style = "font-size: 15px";
-  } else result.style = "font-size: 35px";
-  return str;
+export const changeTextSize = (inputedNumber, resultWindow) => {
+  if (inputedNumber.length > 15 && inputedNumber.length <= 38) {
+    resultWindow.style = "font-size: 15px";
+  } else resultWindow.style = "font-size: 35px";
 };
