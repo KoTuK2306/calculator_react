@@ -5,6 +5,8 @@ export const setNumber = (values, number, resultWindow) => {
     values.setStr(number);
     //Если число после подсёта имеет тип данных number, то оно стирается при наборе следующих цифр
     //(подсчёт возвращает тип данных number)
-  } else values.setStr(values.str + number);
+    return;
+  }
+  values.setStr(values.str + number);
   changeTextSize(values.str, resultWindow);
 };

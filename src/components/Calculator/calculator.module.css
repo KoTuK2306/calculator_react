@@ -39,3 +39,19 @@
   transition: all 0.2s;
   overflow: hidden;
 }
+
+.operation {
+  background-color: var(--operationButtonsColor);
+}
+
+.operation:last-child {
+  background-color: var(--resultButtonColor);
+}
+
+.operation:last-child:hover {
+  background-color: var(--corall);
+}
+
+.operation:last-child:active {
+  background-color: var(--primaryColor);
+}
