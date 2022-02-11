@@ -1,4 +1,4 @@
-import { Calculator } from "./components/Calculator/Calculator";
+import { Calculator } from "./components/Calculator/index";
 
 const App = () => {
   return <Calculator />;

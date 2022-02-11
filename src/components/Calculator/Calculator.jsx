@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import { Button } from "./Button/Button";
-import { clean } from "../../functions/clean";
-import { setOperationWithNumber } from "../../functions/setOperationWithNumber";
-import { countUp } from "../../functions/countUp";
-import { point } from "../../functions/point";
-import { partOfAWhole } from "../../functions/partOfAwhole";
-import { sqrtRounded } from "../../functions/sqrtRounded";
-import { calcPercent } from "../../functions/calcPercent";
-import { setNumber } from "../../functions/setNumber";
-import { backspace } from "../../functions/backspace";
+import { Button } from "./Button/index";
+import {
+  backspace,
+  calcPercent,
+  clean,
+  countUp,
+  partOfWhole,
+  point,
+  setNumber,
+  setOperationWithNumber,
+  sqrtRounded,
+} from "../../functions/index";
 import classes from "./calculator.module.css";
 
 export const Calculator = () => {
@@ -43,7 +45,7 @@ export const Calculator = () => {
           content={"⌫"}
           onClick={() => setStr(backspace(str, resultWindow.current))}
         />
-        <Button className={classes.operation} content={"1/x"} onClick={() => setStr(partOfAWhole(str))} />
+        <Button className={classes.operation} content={"1/x"} onClick={() => setStr(partOfWhole(str))} />
         <Button className={classes.operation} content={"x²"} onClick={() => setStr(Math.pow(str, 2))} />
         <Button className={classes.operation} content={"√x"} onClick={() => setStr(sqrtRounded(str))} />
         <Button
