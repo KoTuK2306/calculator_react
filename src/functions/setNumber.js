@@ -8,5 +8,5 @@ export const setNumber = (values, number, resultWindow) => {
     return;
   }
   values.setStr(values.str + number);
-  changeTextSize(values.str, resultWindow);
+  changeTextSize(values.str + number, resultWindow);
 };

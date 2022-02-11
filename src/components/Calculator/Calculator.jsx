@@ -5,7 +5,7 @@ import { setOperationWithNumber } from "../../functions/setOperationWithNumber";
 import { countUp } from "../../functions/countUp";
 import { point } from "../../functions/point";
 import { partOfAWhole } from "../../functions/partOfAwhole";
-import { sqrt } from "../../functions/sqrt";
+import { sqrtRounded } from "../../functions/sqrtRounded";
 import { calcPercent } from "../../functions/calcPercent";
 import { setNumber } from "../../functions/setNumber";
 import { backspace } from "../../functions/backspace";
@@ -45,7 +45,7 @@ export const Calculator = () => {
         />
         <Button className={classes.operation} content={"1/x"} onClick={() => setStr(partOfAWhole(str))} />
         <Button className={classes.operation} content={"x²"} onClick={() => setStr(Math.pow(str, 2))} />
-        <Button className={classes.operation} content={"√x"} onClick={() => setStr(sqrt(str))} />
+        <Button className={classes.operation} content={"√x"} onClick={() => setStr(sqrtRounded(str))} />
         <Button
           className={classes.operation}
           content={"/"}
