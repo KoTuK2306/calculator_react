@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, memo, useState } from "react";
 import { Button } from "./index";
 import {
   backspace,
@@ -18,19 +18,28 @@ export const Calculator = () => {
   const [windowWithNums, setWindowWithNums] = useState("");
   // num - переменная для набора числа, с которым будут происходить операции
   // windowWithNums - переменная, которая собирает все числа и производит их вычисления
-  const values = {
-    setWindowWithNums: setWindowWithNums,
-    setNum: setNum,
-    num: num,
-    windowWithNums: windowWithNums,
-  };
+  const values = memo(
+    {
+      setWindowWithNums: setWindowWithNums,
+      setNum: setNum,
+      num: num,
+      windowWithNums: windowWithNums,
+    },
+    [num, windowWithNums]
+  );
   const resultWindow = React.createRef();
-  const setNumberCallback = useCallback((event) => {
-    setNumber(values, event.target.innerHTML, resultWindow.current);
-  });
-  const setOperationWithNumberCallback = useCallback((event) => {
-    setOperationWithNumber(values, event.target.innerHTML);
-  });
+  const setNumberCallback = useCallback(
+    (event) => {
+      setNumber(values, event.target.innerHTML, resultWindow.current);
+    },
+    [values, resultWindow]
+  );
+  const setOperationWithNumberCallback = useCallback(
+    (event) => {
+      setOperationWithNumber(values, event.target.innerHTML);
+    },
+    [values]
+  );
 
   return (
     <div className={classes.calculator}>
