@@ -1,11 +1,12 @@
 export const countUp = (values) => {
-  if (values.str === "" && values.input !== "") {
+  if (values.num === "" && values.windowWithNums !== "") {
     //Данное условие удаляет последний знак операции, если окно с набором числа пустое
-    //(fixing error: unexpected end of input)
-    values.setStr(Number(eval(values.input.slice(0, -1))));
-    values.setInput("");
+    //(fixing error: unexpected end of windowWithNums)
+    const windowWithNumbersWithoutLastOperation = values.windowWithNums.slice(0, -1);
+    values.setNum(Number(eval(windowWithNumbersWithoutLastOperation)));
+    values.setWindowWithNums("");
     return;
   }
-  values.setStr(Number(eval(values.input + values.str).toFixed(7)));
-  values.setInput("");
+  values.setNum(Number(eval(values.windowWithNums + values.num).toFixed(7)));
+  values.setWindowWithNums("");
 };

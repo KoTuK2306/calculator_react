@@ -1,7 +1,7 @@
 export { backspace } from "./backspace";
 export { calcPercent } from "./calcPercent";
 export { changeTextSize } from "./changeTextSize";
-export { clean } from "./clean";
+export { clear } from "./clear";
 export { countUp } from "./countUp";
 export { partOfWhole } from "./partOfWhole";
 export { point } from "./point";

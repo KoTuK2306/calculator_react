@@ -1,12 +1,12 @@
 import { changeTextSize } from "./changeTextSize";
 
 export const setNumber = (values, number, resultWindow) => {
-  if (typeof values.str === "number") {
-    values.setStr(number);
-    //Если число после подсёта имеет тип данных number, то оно стирается при наборе следующих цифр
-    //(подсчёт возвращает тип данных number)
+  if (typeof values.num === "number") {
+    values.setNum(number);
+    //Если число после подсёта имеет тип данных number, то оно стирается из окна набора числа при наборе
+    //следующих цифр (подсчёт возвращает тип данных number)
     return;
   }
-  values.setStr(values.str + number);
-  changeTextSize(values.str + number, resultWindow);
+  values.setNum(values.num + number);
+  resultWindow.style = changeTextSize(values.num + number);
 };

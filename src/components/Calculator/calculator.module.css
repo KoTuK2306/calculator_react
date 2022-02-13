@@ -26,7 +26,7 @@
   grid-template-rows: repeat(6, auto);
 }
 
-.input {
+.windowWithNums {
   margin: 10px 10px 0 10px;
   text-align: end;
   font-size: 15px;

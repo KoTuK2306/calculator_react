@@ -1,3 +1,3 @@
-export const sqrtRounded = (str) => {
-  return Number(Math.sqrt(str).toFixed(7));
+export const sqrtRounded = (number) => {
+  return Number(Math.sqrt(number).toFixed(7));
 };

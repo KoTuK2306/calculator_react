@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { Button } from "./Button/index";
+import React, { useCallback, useState } from "react";
+import { Button } from "./index";
 import {
   backspace,
   calcPercent,
-  clean,
+  clear,
   countUp,
   partOfWhole,
   point,
@@ -14,72 +14,62 @@ import {
 import classes from "./calculator.module.css";
 
 export const Calculator = () => {
-  const [str, setStr] = useState("");
-  const [input, setInput] = useState("");
-  // str - переменная для набора числа, с которым будут происходить операции
-  // input - переменная, которая собирает все числа и производит их вычисления
+  const [num, setNum] = useState("");
+  const [windowWithNums, setWindowWithNums] = useState("");
+  // num - переменная для набора числа, с которым будут происходить операции
+  // windowWithNums - переменная, которая собирает все числа и производит их вычисления
   const values = {
-    setInput: setInput,
-    setStr: setStr,
-    str: str,
-    input: input,
+    setWindowWithNums: setWindowWithNums,
+    setNum: setNum,
+    num: num,
+    windowWithNums: windowWithNums,
   };
   const resultWindow = React.createRef();
+  const setNumberCallback = useCallback((event) => {
+    setNumber(values, event.target.innerHTML, resultWindow.current);
+  });
+  const setOperationWithNumberCallback = useCallback((event) => {
+    setOperationWithNumber(values, event.target.innerHTML);
+  });
 
   return (
     <div className={classes.calculator}>
-      <p className={classes.input}>{input}</p>
+      <p className={classes.windowWithNums}>{windowWithNums}</p>
       <p className={classes.result} ref={resultWindow}>
-        {str === "" ? 0 : str}
+        {num === "" ? 0 : num}
       </p>
       <div className={classes.buttonsWrapper}>
         <Button className={classes.operation} content={"%"} onClick={() => calcPercent(values)} />
-        <Button className={classes.operation} content={"CE"} onClick={() => setStr("")} />
+        <Button className={classes.operation} content={"CE"} onClick={() => setNum("")} />
         <Button
           className={classes.operation}
           content={"C"}
-          onClick={() => clean(setStr, setInput, resultWindow.current)}
+          onClick={() => clear(setNum, setWindowWithNums, resultWindow.current)}
         />
         <Button
           className={classes.operation}
           content={"⌫"}
-          onClick={() => setStr(backspace(str, resultWindow.current))}
+          onClick={() => setNum(backspace(num, resultWindow.current))}
         />
-        <Button className={classes.operation} content={"1/x"} onClick={() => setStr(partOfWhole(str))} />
-        <Button className={classes.operation} content={"x²"} onClick={() => setStr(Math.pow(str, 2))} />
-        <Button className={classes.operation} content={"√x"} onClick={() => setStr(sqrtRounded(str))} />
-        <Button
-          className={classes.operation}
-          content={"/"}
-          onClick={(event) => setOperationWithNumber(values, event.target.innerHTML)}
-        />
-        <Button content={"7"} onClick={(event) => setNumber(values, event.target.innerHTML, resultWindow.current)} />
-        <Button content={"8"} onClick={(event) => setNumber(values, event.target.innerHTML, resultWindow.current)} />
-        <Button content={"9"} onClick={(event) => setNumber(values, event.target.innerHTML, resultWindow.current)} />
-        <Button
-          className={classes.operation}
-          content={"*"}
-          onClick={(event) => setOperationWithNumber(values, event.target.innerHTML)}
-        />
-        <Button content={"4"} onClick={(event) => setNumber(values, event.target.innerHTML, resultWindow.current)} />
-        <Button content={"5"} onClick={(event) => setNumber(values, event.target.innerHTML, resultWindow.current)} />
-        <Button content={"6"} onClick={(event) => setNumber(values, event.target.innerHTML, resultWindow.current)} />
-        <Button
-          className={classes.operation}
-          content={"-"}
-          onClick={(event) => setOperationWithNumber(values, event.target.innerHTML)}
-        />
-        <Button content={"1"} onClick={(event) => setNumber(values, event.target.innerHTML, resultWindow.current)} />
-        <Button content={"2"} onClick={(event) => setNumber(values, event.target.innerHTML, resultWindow.current)} />
-        <Button content={"3"} onClick={(event) => setNumber(values, event.target.innerHTML, resultWindow.current)} />
-        <Button
-          className={classes.operation}
-          content={"+"}
-          onClick={(event) => setOperationWithNumber(values, event.target.innerHTML)}
-        />
-        <Button content={"+/-"} onClick={() => setStr(str * -1)} />
-        <Button content={"0"} onClick={(event) => setNumber(values, event.target.innerHTML, resultWindow.current)} />
-        <Button content={"."} onClick={() => point(str.toString(), setStr)} />
+        <Button className={classes.operation} content={"1/x"} onClick={() => setNum(partOfWhole(num))} />
+        <Button className={classes.operation} content={"x²"} onClick={() => setNum(Math.pow(num, 2))} />
+        <Button className={classes.operation} content={"√x"} onClick={() => setNum(sqrtRounded(num))} />
+        <Button className={classes.operation} content={"/"} onClick={setOperationWithNumberCallback} />
+        <Button content={"7"} onClick={setNumberCallback} />
+        <Button content={"8"} onClick={setNumberCallback} />
+        <Button content={"9"} onClick={setNumberCallback} />
+        <Button className={classes.operation} content={"*"} onClick={setOperationWithNumberCallback} />
+        <Button content={"4"} onClick={setNumberCallback} />
+        <Button content={"5"} onClick={setNumberCallback} />
+        <Button content={"6"} onClick={setNumberCallback} />
+        <Button className={classes.operation} content={"-"} onClick={setOperationWithNumberCallback} />
+        <Button content={"1"} onClick={setNumberCallback} />
+        <Button content={"2"} onClick={setNumberCallback} />
+        <Button content={"3"} onClick={setNumberCallback} />
+        <Button className={classes.operation} content={"+"} onClick={setOperationWithNumberCallback} />
+        <Button content={"+/-"} onClick={() => setNum(num * -1)} />
+        <Button content={"0"} onClick={setNumberCallback} />
+        <Button content={"."} onClick={() => point(num.toString(), setNum)} />
         <Button className={classes.operation} content={"="} onClick={() => countUp(values)} />
       </div>
     </div>

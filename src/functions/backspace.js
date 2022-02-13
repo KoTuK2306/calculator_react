@@ -2,6 +2,6 @@ import { changeTextSize } from "./changeTextSize";
 
 export const backspace = (inputedNumber, resultWindow) => {
   inputedNumber = inputedNumber.toString().slice(0, -1);
-  changeTextSize(inputedNumber, resultWindow);
+  resultWindow.style = changeTextSize(inputedNumber);
   return inputedNumber;
 };

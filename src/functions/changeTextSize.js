@@ -1,9 +1,12 @@
 import * as size from "../constants/textSize";
+const numberLenght = 17;
+//Максимальная длина числа, которая может поместиться в окне ввода числа со стандартным стилем шрифта
+const numberLenghtForSmallSize = 44;
+//Максимальная длина числа, которая может поместиться в окне ввода числа с уменьшенным размером шрифта
 
-export const changeTextSize = (inputedNumber, resultWindow) => {
-  if (inputedNumber.length > 17 && inputedNumber.length < 44) {
-    resultWindow.style = `font-size: ${size.smallTextSize}px`;
-    return;
+export const changeTextSize = (inputedNumber) => {
+  if (inputedNumber.length > numberLenght && inputedNumber.length < numberLenghtForSmallSize) {
+    return `font-size: ${size.smallTextSize}px`;
   }
-  resultWindow.style = `font-size: ${size.textSize}px`;
+  return `font-size: ${size.textSize}px`;
 };

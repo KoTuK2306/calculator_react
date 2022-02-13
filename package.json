@@ -19,7 +19,8 @@
   },
   "eslintConfig": {
     "rules": {
-      "no-eval": 0
+      "no-eval": 0,
+      "react-hooks/exhaustive-deps": 0
     },
     "extends": [
       "react-app",
