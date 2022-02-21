@@ -1,0 +1,57 @@
+@import url("../../colors.css");
+
+@font-face {
+  font-family: Rubic;
+  src: url(../Fonts/Rubik.ttf);
+}
+
+.calculator {
+  display: grid;
+  grid-template-rows: 40px 60px auto;
+  background-color: var(--primaryColor);
+  border: 1px solid var(--secondaryColor);
+  width: 360px;
+  height: 520px;
+  margin: 100px auto 0 auto;
+}
+
+.buttonsWrapper {
+  margin: 0;
+  padding: 0;
+  border-top: 0.5px solid var(--secondaryColor);
+  background-color: var(--secondaryColor);
+  display: grid;
+  grid-gap: 1px;
+  grid-template-columns: repeat(4, auto);
+  grid-template-rows: repeat(6, auto);
+}
+
+.windowWithNums {
+  margin: 10px 10px 0 10px;
+  text-align: end;
+  font-size: 15px;
+}
+
+.result {
+  margin: 0 10px 10px 10px;
+  text-align: end;
+  font-size: 35px;
+  transition: all 0.2s;
+  overflow: hidden;
+}
+
+.operation {
+  background-color: var(--operationButtonsColor);
+}
+
+.operation:last-child {
+  background-color: var(--resultButtonColor);
+}
+
+.operation:last-child:hover {
+  background-color: var(--corall);
+}
+
+.operation:last-child:active {
+  background-color: var(--primaryColor);
+}
